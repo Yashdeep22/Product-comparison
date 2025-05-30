@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'Node 16'
+        nodejs 'Node 18'
     }
 
     environment {
@@ -13,7 +13,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Yashdeep22/Product-comparison.git'
+                git branch: 'main', url: 'https://github.com/Yashdeep22/Product-comparison.git'
             }
         }
 
