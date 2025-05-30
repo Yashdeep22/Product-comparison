@@ -485,6 +485,8 @@ def scrape_c():
 def run_method(obj, method_name):
     method = getattr(obj, method_name)
     return method()
-
+@app.route("/health")
+def health():
+    return "OK", 200
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
