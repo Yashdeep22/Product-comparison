@@ -25,10 +25,14 @@ pipeline {
         }
 
         stage('Build React Frontend') {
+            environment {
+                CI = 'false'
+            }
             steps {
-                bat 'cd client && set CI=false && npm run build'
+                bat 'cd client && npm run build'
             }
         }
+
 
         stage('Run Node.js Tests') {
             steps {
