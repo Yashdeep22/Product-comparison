@@ -4,7 +4,6 @@ import './Scrap.css';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Chip from '@mui/material/Chip';
-import Multiselect from 'multiselect-react-dropdown';
 
 
 const Scrap = () => {
@@ -19,8 +18,6 @@ const Scrap = () => {
   const [showData, setShowingData] = useState('');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
-  const [isComparing, setComparing] = useState(false);
-  const [excludeSources, setExcludeSources] = useState([]);
   const [filteredSources, setFilteredSources] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [restoredData, setRestoredData] = useState(null);
@@ -32,7 +29,6 @@ const Scrap = () => {
     Snapdeal: false,
     Dmart: false,
   });
-  const navigate = useNavigate(); 
 
   
   useEffect(() => {
@@ -89,7 +85,6 @@ const Scrap = () => {
     setError('');
     try {
       const cleanedSearchTerm = searchTerm.replace(/\s+/g, '');
-      const response = await axios.get(`http://localhost:5000/api/get_product/scrape?url=${encodeURIComponent(searchTerm)}`);
       const responsedb = await axios.get(`http://localhost:5000/api/product/show?url=${encodeURIComponent(cleanedSearchTerm)}`);
       setData(responsedb.data.data);
       setShowingData(responsedb.data.data);
@@ -160,14 +155,14 @@ const Scrap = () => {
         setSelectedProducts((prevSelectedProducts) => [...prevSelectedProducts, item]);
     }
 };
-const handleExclude = (selectedOptions) => {
-  const values = Array.from(selectedOptions, option => option.value);
-  setExcludeSources(values);
-  // Perform any additional actions with the selected values
-};
-const handleExcludeSelect = (selectedList, selectedItem) => {
-  setExcludeSources(selectedList.map(item => item.name));
-};
+// const handleExclude = (selectedOptions) => {
+//   const values = Array.from(selectedOptions, option => option.value);
+//   setExcludeSources(values);
+//   // Perform any additional actions with the selected values
+// };
+// const handleExcludeSelect = (selectedList, selectedItem) => {
+//   setExcludeSources(selectedList.map(item => item.name));
+// };
 const toggleDropdown = () => {
   setDropdownVisible(!dropdownVisible);
 };

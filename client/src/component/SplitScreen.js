@@ -33,11 +33,11 @@ const SplitScreen = () => {
       }
     };
     if (urls.length === 2) {
-      if((check&1)==0) {
+      if((check&1)===0) {
         fetchContent(urls[0],ids[0], setContent1);
         check=check|1;
       }
-      if((check&2)==0) {
+      if((check&2)===0) {
         fetchContent(urls[1],ids[1], setContent2);
         check=check|2;
       }
