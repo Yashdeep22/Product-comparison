@@ -1,7 +1,7 @@
 // src/Home.jsx
 import React, { useState } from 'react';
 import Register from './Register';
-import './Reg_Login.css'
+import './RegLogin.css'
 import Login from './Login';
 
 const Reg_Login = () => {
