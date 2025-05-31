@@ -21,6 +21,8 @@ pipeline {
             steps {
                 bat 'cd client && npm install --legacy-peer-deps'
                 bat 'cd server && npm install --legacy-peer-deps'
+                bat 'cd server && pip install -r requirements.txt'
+                
             }
         }
 
@@ -32,7 +34,7 @@ pipeline {
                 bat 'cd client && npm run build'
             }
         }
-
+        
 
         stage('Run Node.js Tests') {
             steps {
@@ -57,13 +59,15 @@ pipeline {
 
         stage('Run Python Script') {
             steps {
-                bat 'cd server && python app.py'
+                bat 'cd server && start python app.py'
             }
         }
 
         stage('Simulate Deployment') {
             steps {
-                bat 'echo Simulating backend start (e.g., npm run start)'
+                bat 'cd client && start npm start'   // React dev server
+                bat 'cd server && start npm start' 
+                
             }
         }
 

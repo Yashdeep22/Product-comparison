@@ -2,8 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 from pymongo import MongoClient
 from flask import Flask, request, jsonify
-import concurrent.futures
-import multiprocessing
 import time
 import threading
 
