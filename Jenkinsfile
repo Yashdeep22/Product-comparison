@@ -19,8 +19,8 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'cd client && npm install'
-                bat 'cd server && npm install'
+                bat 'cd client && npm install --legacy-peer-deps'
+                bat 'cd server && npm install --legacy-peer-deps'
             }
         }
 

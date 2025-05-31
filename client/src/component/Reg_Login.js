@@ -1,13 +1,10 @@
 // src/Home.jsx
 import React, { useState } from 'react';
-import EmailForm from './EmailForm';
-import EmailSent from './EmailSent';
 import Register from './Register';
 import './Reg_Login.css'
 import Login from './Login';
 
 const Reg_Login = () => {
-  const [emailSent, setEmailSent] = useState(false);
 
     const [check, setCheck] = useState(0); // 0 for register, 1 for login
     const handleClick = () => {
