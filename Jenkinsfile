@@ -26,7 +26,7 @@ pipeline {
 
         stage('Build React Frontend') {
             steps {
-                bat 'cd client && npm run build'
+                bat 'cd client && set CI= && npm run build'
             }
         }
 
