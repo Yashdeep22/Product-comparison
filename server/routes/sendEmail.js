@@ -7,8 +7,8 @@ const sendEmail = async ({ email, subject, text }) => {
     port: 465,
     secure:true,
     auth: {
-      user: 'yashjaiswal88542@gmail.com',
-      pass: 'yirt mudu hbcy krhs'
+      user: 'abcd@gmail.com',
+      pass: 'xxxx xxxx xxxx xxxx'
     },
   });
   transporter.verify(function (error, success) {
