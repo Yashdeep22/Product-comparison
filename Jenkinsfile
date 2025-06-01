@@ -74,12 +74,16 @@ pipeline {
 
 
         stage('Monitoring') {
-            steps {
-                bat 'curl http://host.docker.internal:5000/health || echo "Health check failed"'
-            }
-        }
+    steps {
+        echo 'Starting monitoring services with Prometheus and Node Exporter...'
+        bat 'docker network create app-network || exit 0'
+        bat 'docker-compose -f monitoring/docker-compose.monitoring.yml up -d'
+        echo 'Waiting for Prometheus to initialize...'
+        bat 'timeout /T 10'
+        bat 'curl http://localhost:9090 || echo "Prometheus not reachable"'
     }
-
+}
+}
     post {
         always {
             echo 'Jenkins pipeline completed.'
