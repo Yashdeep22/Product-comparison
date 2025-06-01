@@ -75,7 +75,7 @@ pipeline {
 
         stage('Monitoring') {
             steps {
-                bat 'echo "Health check failed"'
+                bat 'curl http://localhost:5000/health'
             }
         }
     }
