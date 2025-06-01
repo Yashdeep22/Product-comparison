@@ -70,6 +70,14 @@ pipeline {
                 
             }
         }
+        stage('Deploy to Test Environment') {
+            steps {
+                bat 'docker-compose down || exit 0'
+                bat 'docker-compose build'
+                bat 'docker-compose up -d'
+            }
+        }
+
 
         stage('Monitoring') {
             steps {
