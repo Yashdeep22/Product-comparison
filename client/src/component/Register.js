@@ -49,14 +49,14 @@ const Register = () => {
     }
 
     try {
-      const userCheckResponse = await axios.post('http://localhost:5000/api/auth/check-user', { email });
+      const userCheckResponse = await axios.post('http://0.0.0.0:5000/api/auth/check-user', { email });
       if (userCheckResponse.status === 200) {
         const otp = Math.floor(100000 + Math.random() * 900000); // Generate random 6-digit OTP
         setGeneratedOtp(otp);
 
         setTimeout(async () => {
           try {
-            await axios.post('http://localhost:5000/api/email/send-email', {
+            await axios.post('http://0.0.0.0:5000/api/email/send-email', {
               email,
               subject: 'Your OTP Code',
               text: `Your OTP code is ${otp}`
@@ -88,7 +88,7 @@ const Register = () => {
 
     if (parseInt(otp) === generatedOtp) {
       try {
-        await axios.post('http://localhost:5000/api/auth/register', formData);
+        await axios.post('http://0.0.0.0:5000/api/auth/register', formData);
         console.log('User registered successfully');
         const name=formData.name;
         setFormData({
