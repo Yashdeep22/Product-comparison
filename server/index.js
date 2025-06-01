@@ -14,11 +14,11 @@ const axios = require('axios');
 
 const app = express();
 const PORT = 5000;
-const mongoURI = 'mongodb://localhost:27017/Product_app';
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/Product_app';
 let data = [];
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI, { useNewUrlParser: true})
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
