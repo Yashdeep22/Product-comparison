@@ -36,7 +36,7 @@ router.get('/scrape', async (req, res) => {
     const amazonUrl = 'https://www.amazon.in/s?k='+url+'&page=';
     const amazonDivClass = '.s-card-container';
     try {
-     callPythonScraper(url);
+     //callPythonScraper(url);
     }
     catch {
         console.log('Error with python');

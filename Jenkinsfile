@@ -21,7 +21,6 @@ pipeline {
             steps {
                 bat 'cd client && npm install --legacy-peer-deps'
                 bat 'cd server && npm install --legacy-peer-deps'
-                bat 'cd server && pip install -r requirements.txt'
                 
             }
         }
@@ -57,11 +56,6 @@ pipeline {
             }
         }
 
-        stage('Run Python Script') {
-            steps {
-                bat 'cd server && start python app.py'
-            }
-        }
 
         stage('Simulate Deployment') {
             steps {
