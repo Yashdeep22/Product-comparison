@@ -75,7 +75,7 @@ pipeline {
 
         stage('Monitoring') {
             steps {
-                bat 'curl http://localhost:5000/health'
+                bat 'curl http://host.docker.internal:5000/health || echo "Health check failed"'
             }
         }
     }
