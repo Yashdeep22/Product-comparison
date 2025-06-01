@@ -30,12 +30,14 @@ app.use('/api/email', emailRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/get_product', getproductRoutes);
 app.get('/health', (req, res) => {
+  console.log("Health check hit");
   res.status(200).send('OK');
 });
 
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });
+

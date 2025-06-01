@@ -1,6 +1,23 @@
 version: "3.8"
 
 services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/Product_app
+
   client:
     build: ./client
     ports:
@@ -8,18 +25,5 @@ services:
     depends_on:
       - server
 
-  server:
-    build: ./server
-    ports:
-      - "5000:5000"
-    depends_on:
-      - python
-
-  python:
-    image: python:3.11
-    volumes:
-      - ./server:/app
-    working_dir: /app
-    command: python app.py
-    environment:
-      - PYTHONUNBUFFERED=1
+volumes:
+  mongo-data:
