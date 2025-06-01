@@ -85,7 +85,7 @@ const Scrap = () => {
     setError('');
     try {
       const cleanedSearchTerm = searchTerm.replace(/\s+/g, '');
-      const responsedb = await axios.get(`http://0.0.0.0:5000/api/product/show?url=${encodeURIComponent(cleanedSearchTerm)}`);
+      const responsedb = await axios.get(`http://host.docker.internal:5000/api/product/show?url=${encodeURIComponent(cleanedSearchTerm)}`);
       setData(responsedb.data.data);
       setShowingData(responsedb.data.data);
       setError('');

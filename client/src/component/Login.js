@@ -26,7 +26,7 @@ const Login = () => {
     const { email, password } = formData;
 
     try {
-      const response = await axios.post('http://0.0.0.0:5000/api/auth/login', { email, password });
+      const response = await axios.post('http://host.docker.internal:5000/api/auth/login', { email, password });
       console.log('Login successful:', response.data);
       // Handle success, redirect user or show success message
       setError(null);

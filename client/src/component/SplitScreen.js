@@ -14,7 +14,7 @@ const SplitScreen = () => {
   useEffect(() => {
     const fetchContent = async (url, id, setContent) => {
       try {
-        const response = await axios.get(`http://0.0.0.0:5000/api/get_product/cmp_scrape`, {
+        const response = await axios.get(`http://host.docker.internal:5000/api/get_product/cmp_scrape`, {
           params: {
             url,
             id
